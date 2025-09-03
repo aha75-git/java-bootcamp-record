@@ -1,6 +1,11 @@
 import bootcamp.schulung.zoo.Animal;
 import bootcamp.schulung.zoo.Owner;
 import bootcamp.schulung.zoo.Species;
+import bootcamp.schulung.zoo.Zoo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,5 +23,17 @@ public class Main {
         System.out.println(animal == animal2); // Referenzvergleich
         System.out.println("Tier: " + animal.name() + ", Besitzer: " + animal.owner().name());
         System.out.println("Tier: " + animal2.name() + ", Besitzer: " + animal2.owner().name());
+
+        Owner owner3 = new Owner("John Smith", "Teststr. 4, 44453 Dortmund", 55);
+        Species speciesHund = new Species("Hund", 150);
+        Animal animal3 = new Animal(3, "Bello", speciesHund, 5, owner3);
+        Animal animal4 = new Animal(4, "Bello", speciesHund, 9, owner3);
+
+        List<Animal> animals = Arrays.asList(animal, animal2, animal3, animal4);
+        Zoo zoo = new Zoo(animals);
+
+        System.out.println();
+        System.out.println(zoo);
+        System.out.println("Der gesamte Futterbedarf aller Tiere im Zoo: " + zoo.totalFoodRequirementInGrams() + "g pro Tag");
     }
 }
